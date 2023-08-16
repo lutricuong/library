@@ -8,18 +8,26 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <button class="showDialog">Open</button>
-    <dialog class="dialog" open>
-        <form>
-            <input type="text" id="title" placeholder="Title">
-            <input type="text" id="author" placeholder="Author">
-            <input type="number" id="pages" placeholder="Pages" min="0">
-            <input type="radio" name="read" id="yes" value="yes" checked>
-            <span>Yes</span>
-            <input type="radio" name="read" id="no" value="no">
-            <span>No</span>
-            <button class="closeDialog">OK</button>
-        </form>
-    </dialog>
+    <header>
+        <div class="header">Library</div>
+    </header>
+    <main>
+        <button class="showDialog">Open</button>
+        <dialog>
+            <form>
+                <input type="text" id="title" placeholder="Title">
+                <input type="text" id="author" placeholder="Author">
+                <input type="number" id="pages" placeholder="Pages" min="0">
+                <input type="radio" name="read" id="yes" value="yes" checked>
+                <span>Yes</span>
+                <input type="radio" name="read" id="no" value="no">
+                <span>No</span>
+                <button class="closeDialog">OK</button>
+            </form>
+        </dialog>
+    </main>
+    <footer>
+        <div class="footer">Copyright © 2023 tcuong.lu</div>
+    </footer>
 </body>
 </html>

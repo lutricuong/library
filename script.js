@@ -1,10 +1,12 @@
-const getTitle = document.querySelector('#title');
-const getAuthor = document.querySelector('#author');
-const getPages = document.querySelector('#pages');
-const getRead = document.getElementsByName('read');
-const showDialog = document.querySelector('.showDialog');
-const closeDialog = document.querySelector('.closeDialog');
-console.log(closeDialog);
+const inputTitle = document.querySelector('#title');
+const inputAuthor = document.querySelector('#author');
+const inputPages = document.querySelector('#pages');
+const inputRead = document.getElementsByName('read');
+const buttonShowDialog = document.querySelector('.showDialog');
+const buttonCloseDialog = document.querySelector('.closeDialog');
+const dialog = document.querySelector('dialog');
+const form = document.querySelector('form');
+console.log(dialog)
 
 let myLibrary = [
     {
@@ -15,7 +17,8 @@ let myLibrary = [
     }
 ];
 
-closeDialog.addEventListener('click', addBook)
+buttonShowDialog.addEventListener('click', showDialog);
+buttonCloseDialog.addEventListener('click', closeDialog);
 
 function book(title, author, pages, read) {
     this.title = title;
@@ -25,19 +28,29 @@ function book(title, author, pages, read) {
 }
 
 function addBook(e) {
-    e.preventDefault();
-    title = getTitle.value;
-    author = getAuthor.value;
-    pages = getPages.value;
-    read = getReadStatus();
+    title = inputTitle.value;
+    author = inputAuthor.value;
+    pages = inputPages.value;
+    read = inputReadStatus();
     const newBook = new book(title, author, pages, read);
     myLibrary.push(newBook);
     console.log(myLibrary);
 }
 
-function getReadStatus() {
-    for (i = 0; i < getRead.length; i ++) {
-        if (getRead[i].checked)
-        return getRead[i].value;
+function inputReadStatus() {
+    for (i = 0; i < inputRead.length; i ++) {
+        if (inputRead[i].checked)
+        return inputRead[i].value;
     }
+}
+
+function showDialog() {
+    dialog.showModal();
+}
+
+function closeDialog(e) {
+    e.preventDefault();
+    addBook();
+    dialog.close();
+    form.reset();
 }
