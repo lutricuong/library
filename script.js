@@ -6,7 +6,6 @@ const buttonShowDialog = document.querySelector('.showDialog');
 const buttonCloseDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
 const form = document.querySelector('form');
-console.log(dialog)
 
 let myLibrary = [
     {
@@ -20,14 +19,16 @@ let myLibrary = [
 buttonShowDialog.addEventListener('click', showDialog);
 buttonCloseDialog.addEventListener('click', closeDialog);
 
-function book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
-function addBook(e) {
+function addBook() {
     title = inputTitle.value;
     author = inputAuthor.value;
     pages = inputPages.value;
@@ -53,4 +54,17 @@ function closeDialog(e) {
     addBook();
     dialog.close();
     form.reset();
+    showBook();
+}
+
+function showBook() {
+    myLibrary.forEach((book) => {
+        for (const information in book) {
+            console.log(book[information]);
+        }
+    });
+}
+function test() {
+const books = document.querySelector('.books');
+books.appendChild(document.createElement("div"));
 }
