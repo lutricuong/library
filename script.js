@@ -15,7 +15,7 @@ let myLibrary = [
         read: 'yes'
     }
 ];
-
+showBook();
 buttonShowDialog.addEventListener('click', showDialog);
 buttonCloseDialog.addEventListener('click', closeDialog);
 
@@ -58,13 +58,20 @@ function closeDialog(e) {
 }
 
 function showBook() {
-    myLibrary.forEach((book) => {
-        for (const information in book) {
-            console.log(book[information]);
-        }
-    });
-}
-function test() {
-const books = document.querySelector('.books');
-books.appendChild(document.createElement("div"));
-}
+    const books = document.querySelector('.books');
+    let bookNew = document.createElement("div");
+    let showTitle = document.createElement("div");
+    let showAuthor = document.createElement("div");
+    let showPages = document.createElement("div");
+    let showRead = document.createElement("div");
+    books.appendChild(bookNew);
+    bookNew.appendChild(showTitle);
+    bookNew.appendChild(showAuthor);
+    bookNew.appendChild(showPages);
+    bookNew.appendChild(showRead);
+    showTitle.textContent = myLibrary[myLibrary.length-1].title;
+    showAuthor.textContent = myLibrary[myLibrary.length-1].author;
+    showPages.textContent = myLibrary[myLibrary.length-1].pages;
+    showRead.textContent = myLibrary[myLibrary.length-1].read;
+  }
+
