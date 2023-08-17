@@ -7,15 +7,8 @@ const buttonCloseDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
 const form = document.querySelector('form');
 
-let myLibrary = [
-    {
-        title: 'text',
-        author: 'cuong lu',
-        pages: '55',
-        read: 'yes'
-    }
-];
-showBook();
+let myLibrary = [];
+
 buttonShowDialog.addEventListener('click', showDialog);
 buttonCloseDialog.addEventListener('click', closeDialog);
 

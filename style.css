@@ -1,13 +1,43 @@
 body {
     height: 100vh;
     width: 100vw;
+    display: grid;
+    grid-template-rows: 100px 1fr 25px;
 }
+
 header {
    display: flex;
    justify-content: space-between;
-   padding: 50px;
+   align-items: center;
+   padding-left: 50px;
+   padding-right: 50px;
    background-color: #2185d5;
    color: #f3f3f3;
    font-size: 30px;
    font-weight: 800;
+}
+
+main {
+    background-color: #2d4059;
+}
+
+footer {
+    background-color: #2d4059;
+    color: white;
+    text-align: center;
+}
+.books {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 200px;
+    padding: 30px;
+    gap: 30px;
+}
+
+.book {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }

@@ -14,13 +14,20 @@
         <div class="owner">Cuong Lu</div>
     </header>
     <main>
-        <div class="books"></div>
+        <div class="books">
+            <div class="book">
+                <div>test</div>
+                <div>cuong lu</div>
+                <div>24 pages</div>
+                <div>yes</div>
+            </div>
+        </div>
         <button class="showDialog">Open</button>
         <dialog>
             <form>
-                <input type="text" id="title" placeholder="Title">
-                <input type="text" id="author" placeholder="Author">
-                <input type="number" id="pages" placeholder="Pages" min="0">
+                <input type="text" id="title" placeholder="Title" required>
+                <input type="text" id="author" placeholder="Author" required>
+                <input type="number" id="pages" placeholder="Pages" min="0" required>
                 <input type="radio" name="read" id="yes" value="yes" checked>
                 <span>Yes</span>
                 <input type="radio" name="read" id="no" value="no">
@@ -30,7 +37,7 @@
         </dialog>
     </main>
     <footer>
-        <div class="footer">Copyright © 2023 tcuong.lu</div>
+        <div class="footer">Copyright © 2023 @tcuong.lu</div>
     </footer>
 </body>
 </html>
