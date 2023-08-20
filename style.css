@@ -26,6 +26,7 @@ footer {
     color: white;
     text-align: center;
 }
+
 .books {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -42,9 +43,26 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
+    grid-template-rows: 1.5fr 1fr 1fr 1.5fr;
 }
 
 .bookTitle {
     font-weight: 800;
     font-size: 18px;
+}
+
+.bookRead {
+    border-radius: 10px;
+    border: 0;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+}
+
+.bookReadYes {
+    background-color: #22c55e;
+}
+
+.bookReadNo {
+    background-color: #ef4444;
 }

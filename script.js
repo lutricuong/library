@@ -28,11 +28,10 @@ function addBook() {
     read = inputReadStatus();
     const newBook = new book(title, author, pages, read);
     myLibrary.push(newBook);
-    console.log(myLibrary);
 }
 
 function inputReadStatus() {
-    for (i = 0; i < inputRead.length; i ++) {
+    for (i = 0; i < inputRead.length; i++) {
         if (inputRead[i].checked)
         return inputRead[i].value;
     }
@@ -56,7 +55,7 @@ function showBook() {
     let showTitle = document.createElement("div");
     let showAuthor = document.createElement("div");
     let showPages = document.createElement("div");
-    let showRead = document.createElement("div");
+    let showRead = document.createElement("button");
     books.insertBefore(bookNew, books.children[books.children.length-1]);
     bookNew.appendChild(showTitle);
     bookNew.appendChild(showAuthor);
@@ -64,9 +63,30 @@ function showBook() {
     bookNew.appendChild(showRead);
     bookNew.classList.add("book");
     showTitle.classList.add("bookTitle");
+    showRead.classList.add("bookRead")
     showTitle.textContent = "\"" + myLibrary[myLibrary.length-1].title + "\"";
     showAuthor.textContent = myLibrary[myLibrary.length-1].author;
     showPages.textContent = myLibrary[myLibrary.length-1].pages + " pages";
     showRead.textContent = myLibrary[myLibrary.length-1].read;
+    changeColorStatusRead(showRead);
+  }
+
+  function changeColorStatusRead(showRead) {
+    if (showRead.textContent == "yes") {
+        showRead.classList.add("bookReadYes");
+    }
+    else showRead.classList.add("bookReadNo");
+    showRead.addEventListener('click',() => {
+        if (showRead.textContent == "yes") {
+            showRead.textContent = "no";
+            showRead.classList.remove("bookReadYes");
+            showRead.classList.add("bookReadNo");
+        }
+        else {
+            showRead.textContent = "yes";
+            showRead.classList.add("bookReadYes");
+            showRead.classList.remove("bookReadNo");
+        }
+    });
   }
 
