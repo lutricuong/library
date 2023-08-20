@@ -28,8 +28,9 @@ footer {
 }
 .books {
     display: grid;
-    grid-template-columns: 200px 200px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: 200px;
+    grid-auto-rows: 200px;
     padding: 30px;
     gap: 30px;
 }
@@ -40,4 +41,10 @@ footer {
     display: grid;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+.bookTitle {
+    font-weight: 800;
+    font-size: 18px;
 }

@@ -57,14 +57,16 @@ function showBook() {
     let showAuthor = document.createElement("div");
     let showPages = document.createElement("div");
     let showRead = document.createElement("div");
-    books.appendChild(bookNew);
+    books.insertBefore(bookNew, books.children[books.children.length-1]);
     bookNew.appendChild(showTitle);
     bookNew.appendChild(showAuthor);
     bookNew.appendChild(showPages);
     bookNew.appendChild(showRead);
-    showTitle.textContent = myLibrary[myLibrary.length-1].title;
+    bookNew.classList.add("book");
+    showTitle.classList.add("bookTitle");
+    showTitle.textContent = "\"" + myLibrary[myLibrary.length-1].title + "\"";
     showAuthor.textContent = myLibrary[myLibrary.length-1].author;
-    showPages.textContent = myLibrary[myLibrary.length-1].pages;
+    showPages.textContent = myLibrary[myLibrary.length-1].pages + " pages";
     showRead.textContent = myLibrary[myLibrary.length-1].read;
   }
 
