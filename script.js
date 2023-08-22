@@ -6,6 +6,7 @@ const buttonShowDialog = document.querySelector('.showDialog');
 const buttonCloseDialog = document.querySelector('.closeDialog');
 const dialog = document.querySelector('dialog');
 const form = document.querySelector('form');
+const books = document.querySelector('.books');
 
 let myLibrary = [];
 
@@ -50,43 +51,51 @@ function closeDialog(e) {
 }
 
 function showBook() {
-    const books = document.querySelector('.books');
-    let bookNew = document.createElement("div");
-    let showTitle = document.createElement("div");
-    let showAuthor = document.createElement("div");
-    let showPages = document.createElement("div");
-    let showRead = document.createElement("button");
+    let bookNew = document.createElement('div');
+    let showTitle = document.createElement('div');
+    let showAuthor = document.createElement('div');
+    let showPages = document.createElement('div');
+    let showRead = document.createElement('button');
+    let buttonRemoveBook = document.createElement('button')
     books.insertBefore(bookNew, books.children[books.children.length-1]);
     bookNew.appendChild(showTitle);
     bookNew.appendChild(showAuthor);
     bookNew.appendChild(showPages);
     bookNew.appendChild(showRead);
-    bookNew.classList.add("book");
-    showTitle.classList.add("bookTitle");
-    showRead.classList.add("bookRead")
-    showTitle.textContent = "\"" + myLibrary[myLibrary.length-1].title + "\"";
+    bookNew.appendChild(buttonRemoveBook);
+    bookNew.classList.add('book');
+    showTitle.classList.add('bookTitle');
+    showRead.classList.add('bookRead')
+    buttonRemoveBook.classList.add('removeBook')
+    showTitle.textContent = '\"' + myLibrary[myLibrary.length-1].title + '\"';
     showAuthor.textContent = myLibrary[myLibrary.length-1].author;
-    showPages.textContent = myLibrary[myLibrary.length-1].pages + " pages";
+    showPages.textContent = myLibrary[myLibrary.length-1].pages + ' pages';
     showRead.textContent = myLibrary[myLibrary.length-1].read;
+    buttonRemoveBook.textContent = 'Remove';
     changeColorStatusRead(showRead);
+    buttonRemoveBook.addEventListener('click', () => removeBook(bookNew));
   }
 
   function changeColorStatusRead(showRead) {
-    if (showRead.textContent == "yes") {
-        showRead.classList.add("bookReadYes");
+    if (showRead.textContent == 'yes') {
+        showRead.classList.add('bookReadYes');
     }
-    else showRead.classList.add("bookReadNo");
+    else showRead.classList.add('bookReadNo');
     showRead.addEventListener('click',() => {
-        if (showRead.textContent == "yes") {
-            showRead.textContent = "no";
-            showRead.classList.remove("bookReadYes");
-            showRead.classList.add("bookReadNo");
+        if (showRead.textContent == 'yes') {
+            showRead.textContent = 'no';
+            showRead.classList.remove('bookReadYes');
+            showRead.classList.add('bookReadNo');
         }
         else {
-            showRead.textContent = "yes";
-            showRead.classList.add("bookReadYes");
-            showRead.classList.remove("bookReadNo");
+            showRead.textContent = 'yes';
+            showRead.classList.add('bookReadYes');
+            showRead.classList.remove('bookReadNo');
         }
     });
   }
 
+  function removeBook(bookNew) {
+    bookNew.remove();
+    myLibrary.pop();
+  }
