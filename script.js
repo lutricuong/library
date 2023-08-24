@@ -31,25 +31,6 @@ function addBook() {
     myLibrary.push(newBook);
 }
 
-function inputReadStatus() {
-    for (i = 0; i < inputRead.length; i++) {
-        if (inputRead[i].checked)
-        return inputRead[i].value;
-    }
-}
-
-function showDialog() {
-    dialog.showModal();
-}
-
-function closeDialog(e) {
-    e.preventDefault();
-    addBook();
-    dialog.close();
-    form.reset();
-    showBook();
-}
-
 function showBook() {
     let bookNew = document.createElement('div');
     let showTitle = document.createElement('div');
@@ -72,30 +53,47 @@ function showBook() {
     showPages.textContent = myLibrary[myLibrary.length-1].pages + ' pages';
     showRead.textContent = myLibrary[myLibrary.length-1].read;
     buttonRemoveBook.textContent = 'Remove';
-    changeColorStatusRead(showRead);
-    buttonRemoveBook.addEventListener('click', () => removeBook(bookNew));
-  }
-
-  function changeColorStatusRead(showRead) {
     if (showRead.textContent == 'yes') {
         showRead.classList.add('bookReadYes');
     }
     else showRead.classList.add('bookReadNo');
-    showRead.addEventListener('click',() => {
-        if (showRead.textContent == 'yes') {
-            showRead.textContent = 'no';
-            showRead.classList.remove('bookReadYes');
-            showRead.classList.add('bookReadNo');
-        }
-        else {
-            showRead.textContent = 'yes';
-            showRead.classList.add('bookReadYes');
-            showRead.classList.remove('bookReadNo');
-        }
-    });
-  }
+    showRead.addEventListener('click', changeColorStatusRead.bind(showBook, showRead));
+    buttonRemoveBook.addEventListener('click', removeBook.bind(showBook, bookNew));
+}
 
-  function removeBook(bookNew) {
+function inputReadStatus() {
+    for (i = 0; i < inputRead.length; i++) {
+        if (inputRead[i].checked)
+        return inputRead[i].value;
+    }
+}
+
+function showDialog() {
+    dialog.showModal();
+}
+
+function closeDialog(e) {
+    e.preventDefault();
+    addBook();
+    dialog.close();
+    form.reset();
+    showBook();
+}
+
+function changeColorStatusRead(showRead) {
+    if (showRead.textContent == 'yes') {
+        showRead.textContent = 'no';
+        showRead.classList.remove('bookReadYes');
+        showRead.classList.add('bookReadNo');
+    }
+    else {
+        showRead.textContent = 'yes';
+        showRead.classList.add('bookReadYes');
+        showRead.classList.remove('bookReadNo');
+    }
+}
+
+function removeBook(bookNew) {
     bookNew.remove();
     myLibrary.pop();
-  }
+}
