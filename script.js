@@ -32,12 +32,12 @@ function addBook() {
 }
 
 function showBook() {
-    let bookNew = document.createElement('div');
-    let showTitle = document.createElement('div');
-    let showAuthor = document.createElement('div');
-    let showPages = document.createElement('div');
-    let showRead = document.createElement('button');
-    let buttonRemoveBook = document.createElement('button')
+    const bookNew = document.createElement('div');
+    const showTitle = document.createElement('div');
+    const showAuthor = document.createElement('div');
+    const showPages = document.createElement('div');
+    const showRead = document.createElement('button');
+    const buttonRemoveBook = document.createElement('button')
     books.insertBefore(bookNew, books.children[books.children.length-1]);
     bookNew.appendChild(showTitle);
     bookNew.appendChild(showAuthor);
@@ -46,8 +46,9 @@ function showBook() {
     bookNew.appendChild(buttonRemoveBook);
     bookNew.classList.add('book');
     showTitle.classList.add('bookTitle');
-    showRead.classList.add('bookRead')
-    buttonRemoveBook.classList.add('removeBook')
+    showRead.classList.add('bookRead');
+    buttonRemoveBook.classList.add('removeBook');
+    const bookRead = Array.from(document.querySelectorAll('.bookRead'));
     showTitle.textContent = '\"' + myLibrary[myLibrary.length-1].title + '\"';
     showAuthor.textContent = myLibrary[myLibrary.length-1].author;
     showPages.textContent = myLibrary[myLibrary.length-1].pages + ' pages';
@@ -57,7 +58,7 @@ function showBook() {
         showRead.classList.add('bookReadYes');
     }
     else showRead.classList.add('bookReadNo');
-    showRead.addEventListener('click', changeColorStatusRead.bind(showBook, showRead));
+    showRead.addEventListener('click', changeStatusRead.bind(showBook, showRead, bookRead));
     buttonRemoveBook.addEventListener('click', removeBook.bind(showBook, bookNew));
 }
 
@@ -78,11 +79,13 @@ function closeDialog(e) {
     dialog.close();
     form.reset();
     showBook();
+
 }
 
-function changeColorStatusRead(showRead) {
+function changeStatusRead(showRead, bookRead) {
     if (showRead.textContent == 'yes') {
         showRead.textContent = 'no';
+        myLibrary[bookRead.length-1].read = 'no';
         showRead.classList.remove('bookReadYes');
         showRead.classList.add('bookReadNo');
     }
@@ -90,7 +93,9 @@ function changeColorStatusRead(showRead) {
         showRead.textContent = 'yes';
         showRead.classList.add('bookReadYes');
         showRead.classList.remove('bookReadNo');
+        myLibrary[bookRead.length-1].read = 'yes';
     }
+    console.log(myLibrary);
 }
 
 function removeBook(bookNew) {
